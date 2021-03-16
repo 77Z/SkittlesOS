@@ -16,9 +16,9 @@
 
 ; Subroutines
 %include "./bootsect/bootsect_print.asm"
-%include "32bit-gdt.asm"
-%include "32bit-print.asm"
-%include "32bit-switch.asm"
+%include "./bootsect/32bit-gdt.asm"
+%include "./bootsect/32bit-print.asm"
+%include "./bootsect/32bit-switch.asm"
 
 
 ; PROTECTED MODE
