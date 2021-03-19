@@ -1,6 +1,5 @@
-; Arch: x86_64
-; Author: Vince R
-; File: bootsect_print.asm
+; Arch: i386
+; File: print.asm
 
 print:
 	pusha ; Push all registers to the stack

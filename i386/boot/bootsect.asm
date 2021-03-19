@@ -1,5 +1,4 @@
-; Arch: x86_64
-; Author: Vince R
+; Arch: i386
 ; File: bootsect.asm
 
 [org 0x7c00]
@@ -19,13 +18,13 @@ KERNEL_OFFSET equ 0x1000	; The same number used when linking(check the Makefile)
 	jmp $			; Never be executed unless something goes horribly wrong ;)
 
 ; Subroutines
-%include "./bootsect/bootsect_print.asm"	; 16-bit
-%include "./bootsect/bootsect_print_hex.asm"
-%include "./bootsect/bootsect_disk.asm"
+%include "boot/print.asm"				; 16-bit
+%include "boot/print_hex.asm"
+%include "boot/disk.asm"
 
-%include "./bootsect/32bit-gdt.asm"		; 32-bit
-%include "./bootsect/32bit-print.asm"
-%include "./bootsect/32bit-switch.asm"
+%include "boot/gdt.asm"					; 32-bit
+%include "boot/32bit-print.asm"
+%include "boot/switch_pm.asm"
 
 [bits 16]
 load_kernel:	; Called from real mode

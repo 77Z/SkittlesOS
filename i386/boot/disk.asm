@@ -1,6 +1,5 @@
-; Arch: x86_64
-; Author: Vince R
-; File: bootsect_disk.asm
+; Arch: i386
+; File: disk.asm
 
 ; load 'dh' sectors from drive 'dl' into ES:BX
 disk_load:

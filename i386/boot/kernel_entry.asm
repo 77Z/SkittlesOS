@@ -1,3 +1,6 @@
+; Arch: i386
+; File: kernel_entry.asm
+
 [bits 32]	; Run in 32-bit Protected Mode
 [extern main]	; Defines the calling point, like telling assembly where the main function is in C
 call main	; This actually DOES the calling of the kernal main function

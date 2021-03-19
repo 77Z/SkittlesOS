@@ -1,3 +1,6 @@
+; Arch: i386
+; File: 32bit-print.asm
+
 [bits 32]	; Use 32-bit protected mode
 		; It's useful for virtual memory, paging and safe multi-tasking
 

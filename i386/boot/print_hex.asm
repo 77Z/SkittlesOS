@@ -1,6 +1,5 @@
-; Arch: x86_64
-; Author: Vince R
-; File: bootsect_print_hex.asm
+; Arch: i386
+; File: print_hex.asm
 
 ; RECEIVING DATA IN dx
 print_hex:
