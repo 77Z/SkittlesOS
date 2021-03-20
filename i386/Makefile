@@ -8,8 +8,7 @@ HEADERS   = $(wildcard kernel/*.h drivers/*.h)
 OBJ = ${C_SOURCES:.c=.o}
 
 CC = i386-elf-gcc
-# Debugging
-# GDB = /usr/local/i386elfgcc/bin/i386-elf-gdb
+# CC = i386-tcc
 
 # First rule is run by default
 os-image.bin: boot/bootsect.bin kernel.bin
@@ -35,5 +34,5 @@ run: os-image.bin
 
 clean:
 	rm -rf *.bin *.dis *.o os-image.bin *.elf
-	rm -rf kernel/*.o boot/*.bin drivers/*.o boot/*.o
+	rm -rf kernel/*.o boot/*.bin drivers/*.o boot/*.o cpu/*.o
 
