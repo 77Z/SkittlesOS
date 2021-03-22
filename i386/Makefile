@@ -2,8 +2,8 @@
 # # $< = first dependency
 # # $^ = all dependencies
 
-C_SOURCES = $(wildcard kernel/*.c drivers/*.c)
-HEADERS   = $(wildcard kernel/*.h drivers/*.h)
+C_SOURCES = $(wildcard kernel/*.c drivers/*.c cpu/*.c libc/*.c)
+HEADERS   = $(wildcard kernel/*.h drivers/*.h cpu/*.h libc/*.h)
 # File extension replacement
 OBJ = ${C_SOURCES:.c=.o}
 
