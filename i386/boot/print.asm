@@ -3,6 +3,7 @@
 
 print:
 	pusha ; Push all registers to the stack
+	mov ah, 0x0e
 
 ; Our string is stored like a C character array,
 ; so keep this code in mind:
@@ -17,7 +18,6 @@ start:
 	je done		; If it's null terminated, call "done"
 
 	; Print the string with the bios's help
-	mov ah, 0x0e
 	int 0x10	; 'al' already contains the char
 
 	; increment pointer and do next loop, like a for loop

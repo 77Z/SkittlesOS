@@ -5,10 +5,12 @@
 C_SOURCES = $(wildcard kernel/*.c drivers/*.c cpu/*.c libc/*.c)
 HEADERS   = $(wildcard kernel/*.h drivers/*.h cpu/*.h libc/*.h)
 # File extension replacement
-OBJ = ${C_SOURCES:.c=.o}
+OBJ = ${C_SOURCES:.c=.o cpu/interrupt.o}
 
 CC = i386-elf-gcc
 # CC = i386-tcc
+
+CFLAGS = -ffreestanding -Wall -Wextra -fno-exceptions -m32
 
 # First rule is run by default
 os-image.bin: boot/bootsect.bin kernel.bin

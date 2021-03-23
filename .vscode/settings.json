@@ -3,6 +3,8 @@
         "util.h": "c",
         "ports.h": "c",
         "screen.h": "c",
-        "isr.h": "c"
+        "isr.h": "c",
+        "idt.h": "c",
+        "timer.h": "c"
     }
 }
