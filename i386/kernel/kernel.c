@@ -4,6 +4,7 @@
 #include "../cpu/timer.h"
 #include "../drivers/keyboard.h"
 #include "kernel.h"
+//#include "../programs/Register.h"
 
 void about() { kprint("\nSkittles OS Ver 0.1.0\nBadoom Cha\n"); }
 void reset_view() { kprint("\n> "); }
@@ -13,6 +14,10 @@ void kernel_main() {
 	isr_install();
 	irq_install();
 	//clear_screen();
+
+	/* for (int i = 0; i < sizeof Applications / sizeof Applications[i]; i++) {
+		kprint(Applications + i);
+	} */
 
 	about();
 	kprint("Type something!\n");
