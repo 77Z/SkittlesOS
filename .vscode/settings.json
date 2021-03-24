@@ -6,6 +6,10 @@
         "isr.h": "c",
         "idt.h": "c",
         "timer.h": "c",
-        "mem.h": "c"
+        "mem.h": "c",
+        "string.h": "c",
+        "cstring": "c",
+        "*.def": "c",
+        "skittles.h": "c"
     }
 }

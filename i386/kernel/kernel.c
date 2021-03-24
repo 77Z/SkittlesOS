@@ -4,7 +4,9 @@
 #include "../cpu/timer.h"
 #include "../drivers/keyboard.h"
 #include "kernel.h"
-//#include "../programs/Register.h"
+
+//Applications
+#include "../programs/pi.h"
 
 void about() { kprint("\nSkittles OS Ver 0.1.0\nBadoom Cha\n"); }
 void reset_view() { kprint("\n> "); }
@@ -13,10 +15,11 @@ void kernel_main() {
 	// Initialization stuffs
 	isr_install();
 	irq_install();
-	//clear_screen();
+	clear_screen();
 
-	/* for (int i = 0; i < sizeof Applications / sizeof Applications[i]; i++) {
-		kprint(Applications + i);
+	/* for (int i = 0; i < sizeof Applications / sizeof Applications[0]; i++) {
+		kprint(Applications[i]);
+		kprint("\n");
 	} */
 
 	about();
@@ -26,21 +29,55 @@ void kernel_main() {
 
 
 void user_input(char *input) {
+
+	char *Applications[] = {
+		"vim",
+		"pi",
+		"echo"
+	};
+
 	if (strcmp(input, "END") == 0) {
 		kprint("Halting the CPU. Have a good day\n");
 		asm volatile("hlt");
-	} else if (strcmp(input, "PING") == 0) {
-		kprint("PONG!");
+	} else if (strcmp(input, "uname") == 0) {
+		kprint("Skittles");
 		reset_view();
-	} else if (strcmp(input, "CLEAR") == 0) {
+	} else if (strcmp(input, "clear") == 0) {
 		clear_screen();
 		reset_view();
-	} else if (strcmp(input, "ABOUT") == 0) {
+	} else if (strcmp(input, "about") == 0) {
 		about();
 		reset_view();
 	} else {
-		kprint("You said: ");
-		kprint(input);
+		//Not a system command, check if it's an application command
+
+		int MatchFound = 0;
+
+		for (int i = 0; i < sizeof Applications / sizeof Applications[0]; i++) {
+			
+			//This needs to be rewritten to handle things like arguments, if only strtok wasn't so hard to write :'(
+			//A good replacement for this is javascripts split function, but this aint js chief
+			if (strcmp(Applications[i], input) == 0) {
+				// Match
+				MatchFound = 1;
+				//Match was found, execute the programs main function
+				if (strcmp(Applications[i], "pi") == 0) {
+					// Run the pi program
+					PI_main();
+				}
+			}
+		}
+
+		if (!MatchFound) {
+			kprint("Entered Command \"");
+			kprint(input);
+			kprint("\" Was not recognized as a system command or application.");
+		}
+
 		reset_view();
+
+		/* kprint("You said: ");
+		kprint(input);
+		reset_view(); */
 	}
 }

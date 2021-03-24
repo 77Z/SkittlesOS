@@ -16,7 +16,7 @@ void SKIT_memory_set(u8 *dest, u8 val, u32 len)         { memory_set(dest, val, 
 u32 SKIT_kmalloc(u32 size, int align, u32 *phys_addr)        { return kmalloc(size, align, phys_addr); }
 
 // String Manipulation
-void SKIT_int_to_ascii(int n, char str[]) { int_to_ascii(n, *str); }
+void SKIT_int_to_ascii(int n, char str[]) { int_to_ascii(n, str);  }
 void SKIT_reverse(char s[])               { reverse(s);            }
 int  SKIT_strlen(char s[])                { return strlen(s);      }
 void SKIT_backspace(char s[])             { backspace(s);          }
