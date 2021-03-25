@@ -44,7 +44,7 @@ BEGIN_PM:	; Called from ./bootsect/32bit-switch.asm
 	mov ebx, MSG_PROTECTED_MODE
 	call print_string_pm
 	call KERNEL_OFFSET	; Give all control to the kernel
-	jmp $			; Stay here if the kernel return control to us (not gaurenteed)
+	jmp $			; Stay here if the kernel returns control to us (not gaurenteed)
 
 ; DATA
 
