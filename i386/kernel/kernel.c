@@ -7,6 +7,7 @@
 
 //Applications
 #include "../programs/pi.h"
+#include "../programs/uname.h"
 
 void about() { kprint("\nSkittles OS Ver 0.1.0\nBadoom Cha\n"); }
 void reset_view() { kprint("\n> "); }
@@ -31,17 +32,13 @@ void kernel_main() {
 void user_input(char *input) {
 
 	char *Applications[] = {
-		"vim",
 		"pi",
-		"echo"
+		"uname"
 	};
 
 	if (strcmp(input, "END") == 0) {
 		kprint("Halting the CPU. Have a good day\n");
 		asm volatile("hlt");
-	} else if (strcmp(input, "uname") == 0) {
-		kprint("Skittles");
-		reset_view();
 	} else if (strcmp(input, "clear") == 0) {
 		clear_screen();
 		reset_view();
@@ -64,6 +61,8 @@ void user_input(char *input) {
 				if (strcmp(Applications[i], "pi") == 0) {
 					// Run the pi program
 					PI_main();
+				} else if (strcmp(Applications[i], "uname") == 0) {
+					UNAME_main();
 				}
 			}
 		}
