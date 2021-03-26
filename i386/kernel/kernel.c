@@ -37,7 +37,8 @@ void user_input(char *input) {
 	};
 
 	if (strcmp(input, "END") == 0) {
-		kprint("Halting the CPU. Have a good day\n");
+		clear_screen();
+		kprint_at("Halting the CPU. Have a good day\n", 23, 11); // Centerish
 		asm volatile("hlt");
 	} else if (strcmp(input, "clear") == 0) {
 		clear_screen();
