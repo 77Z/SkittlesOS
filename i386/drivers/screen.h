@@ -285,6 +285,8 @@
 void clear_screen();
 void kprint_at(char *message, int col, int row);
 void kprint(char *message);
+void kprint_at_color(char *message, int col, int row, char attr);
+void kprint_color(char *message, char attr);
 void kprint_backspace();
 
 #endif /* _SCREEN_H_ */
