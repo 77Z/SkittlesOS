@@ -8,6 +8,8 @@
 //Applications
 #include "../programs/pi.h"
 #include "../programs/uname.h"
+#include "../programs/whoami.h"
+#include "../programs/game.h"
 
 void about() { kprint("\nSkittles OS Ver 0.1.0\nBadoom Cha\n"); }
 void reset_view() { kprint("\n> "); }
@@ -33,7 +35,9 @@ void user_input(char *input) {
 
 	char *Applications[] = {
 		"pi",
-		"uname"
+		"uname",
+		"game",
+		"whoami"
 	};
 
 	if (strcmp(input, "END") == 0) {
@@ -64,6 +68,10 @@ void user_input(char *input) {
 					PI_main();
 				} else if (strcmp(Applications[i], "uname") == 0) {
 					UNAME_main();
+				} else if (strcmp(Applications[i], "whoami") == 0) {
+					WHOAMI_main();
+				} else if (strcmp(Applications[i], "game") == 0) {
+					GAME_main();
 				}
 			}
 		}
