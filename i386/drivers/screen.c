@@ -56,7 +56,7 @@ void kprint_backspace(char key_buffer[256]) {
 	}
 }
 
-void kprint_hex(int hexCode) {
+/* void kprint_hex(int hexCode) {
 		asm volatile(
 			"print_hex:\n"
 			"pusha\n"
@@ -64,8 +64,9 @@ void kprint_hex(int hexCode) {
 			"hex_loop:\n"
 			"cmp %cx, 4\n"
 			"je end\n"
-			"mov %dx, %[hex]\n" : [hex] "=r" (hexCode)
-			"mov %ax, %dx\n"
+			//"mov %dx, %[hex]\n" : [hex] "=r" (hexCode)
+			//"mov %ax, %dx\n"
+			"mov %ax, $[hex]\n" : [hex] "=r" (hexCode) :
 			"and %ax, 0x000f\n"
 			"add %al, 0x30\n"
 			"cmp %al, 0x39\n"
@@ -89,7 +90,7 @@ void kprint_hex(int hexCode) {
 		);
 	//END
 	//kprint();
-}
+} */
 
 // PRIVATE KERNEL FUNCTIONS
 

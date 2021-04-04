@@ -8,10 +8,12 @@
 
 #define BACKSPACE 0x0E
 #define CAPSLOCK 0x3A
+#define SHIFTDOWN 0x2A
+#define SHIFTUP 0xAA
 #define ENTER 0x1C
 
 static char key_buffer[256];
-static int CapsLockStatus = 0;
+static int CapsStatus = 0;
 
 #define SC_MAX 58
 const char *sc_name[] = { "ERROR", "Esc", "1", "2", "3", "4", "5", "6", 
@@ -44,9 +46,7 @@ static void keyboard_callback(registers_t regs) {
 	u8 scancode = port_byte_in(0x60);
 	
 	if (scancode > SC_MAX) return;
-	kprint(scancode);
-	kprint_hex(1);
-	/* if (scancode == BACKSPACE) {
+	if (scancode == BACKSPACE) {
 		kprint_backspace(key_buffer);
 		backspace(key_buffer);
 	} else if (scancode == ENTER) {
@@ -55,19 +55,23 @@ static void keyboard_callback(registers_t regs) {
 		key_buffer[0] = '\0';
 	} else if (scancode == CAPSLOCK) {
 		// Toggle caps lock
-		if (CapsLockStatus)
-			CapsLockStatus = 0;
+		if (CapsStatus)
+			CapsStatus = 0;
 		else
-			CapsLockStatus = 1;
+			CapsStatus = 1;
+	} else if (scancode == SHIFTUP) {
+		CapsStatus = 0;
+	} else if (scancode == SHIFTDOWN) {
+		CapsStatus = 1;
 	} else {
 		char letter = sc_ascii[(int)scancode];
-		if (CapsLockStatus == 0)
+		if (CapsStatus == 0)
 			letter = Lsc_ascii[(int)scancode];
 		// Remember that kprint only accepts char[]
 		char str[2] = {letter, '\0'};
 		append(key_buffer, letter);
 		kprint(str);
-	} */
+	}
 	UNUSED(regs);
 }
 
