@@ -47,7 +47,6 @@ void kprint_color(char *message, char attr) {
 	kprint_at_color(message, -1, -1, attr);
 }
 
-
 void kprint_backspace(char key_buffer[256]) {
 	if (strlen(key_buffer) > 0) {
 		int offset = get_cursor_offset()-2;
@@ -55,6 +54,41 @@ void kprint_backspace(char key_buffer[256]) {
 		int col = get_offset_col(offset);
 		print_char(0x08, col, row, WHITE_ON_BLACK);
 	}
+}
+
+void kprint_hex(int hexCode) {
+		asm volatile(
+			"print_hex:\n"
+			"pusha\n"
+			"mov %cx, 0\n"
+			"hex_loop:\n"
+			"cmp %cx, 4\n"
+			"je end\n"
+			"mov %dx, %[hex]\n" : [hex] "=r" (hexCode)
+			"mov %ax, %dx\n"
+			"and %ax, 0x000f\n"
+			"add %al, 0x30\n"
+			"cmp %al, 0x39\n"
+			"jle step2\n"
+			"add %al, 7\n"
+			"step2:\n"
+			"mov %bx, HEX_OUT\n"
+			"sub %bx, %cx\n"
+			"mov [bx], %al\n"
+			"ror %dx, 4\n"
+			"add cx, 1\n"
+			"jmp hex_loop\n"
+			"end:\n"
+			"mov %bx, HEX_OUT\n"
+			"mov %eax, %bx\n"
+			"push %eax\n"
+			"call kprint\n"
+			"pop %ebx\n"
+			"HEX_OUT:\n"
+			"db '0x0000', 0\n"
+		);
+	//END
+	//kprint();
 }
 
 // PRIVATE KERNEL FUNCTIONS

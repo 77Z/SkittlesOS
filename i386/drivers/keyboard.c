@@ -44,12 +44,14 @@ static void keyboard_callback(registers_t regs) {
 	u8 scancode = port_byte_in(0x60);
 	
 	if (scancode > SC_MAX) return;
-	if (scancode == BACKSPACE) {
+	kprint(scancode);
+	kprint_hex(1);
+	/* if (scancode == BACKSPACE) {
 		kprint_backspace(key_buffer);
 		backspace(key_buffer);
 	} else if (scancode == ENTER) {
 		kprint("\n");
-		user_input(key_buffer); /* kernel-controlled function */
+		user_input(key_buffer); // kernel-controlled function
 		key_buffer[0] = '\0';
 	} else if (scancode == CAPSLOCK) {
 		// Toggle caps lock
@@ -61,11 +63,11 @@ static void keyboard_callback(registers_t regs) {
 		char letter = sc_ascii[(int)scancode];
 		if (CapsLockStatus == 0)
 			letter = Lsc_ascii[(int)scancode];
-		/* Remember that kprint only accepts char[] */
+		// Remember that kprint only accepts char[]
 		char str[2] = {letter, '\0'};
 		append(key_buffer, letter);
 		kprint(str);
-	}
+	} */
 	UNUSED(regs);
 }
 

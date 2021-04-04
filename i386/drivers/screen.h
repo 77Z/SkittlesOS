@@ -288,5 +288,6 @@ void kprint(char *message);
 void kprint_at_color(char *message, int col, int row, char attr);
 void kprint_color(char *message, char attr);
 void kprint_backspace();
+void kprint_hex(int hexCode);
 
 #endif /* _SCREEN_H_ */
