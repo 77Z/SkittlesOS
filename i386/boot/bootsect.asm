@@ -43,6 +43,7 @@ load_kernel:	; Called from real mode
 BEGIN_PM:	; Called from ./bootsect/32bit-switch.asm
 	mov ebx, MSG_PROTECTED_MODE
 	call print_string_pm
+	mov ebx, [BOOT_DRIVE]
 	call KERNEL_OFFSET	; Give all control to the kernel
 	jmp $			; Stay here if the kernel returns control to us (not gaurenteed)
 

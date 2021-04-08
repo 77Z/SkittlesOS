@@ -5,6 +5,9 @@
 #include "../drivers/keyboard.h"
 #include "kernel.h"
 
+//Filesystem
+#include "../filesystem/fs.h"
+
 //Applications
 #include "../programs/pi.h"
 #include "../programs/uname.h"
@@ -13,17 +16,18 @@
 
 void about() { kprint("\nSkittles OS Ver 0.1.0\nBadoom Cha\n"); }
 void reset_view() { kprint("\n> "); }
+void halt_cpu() { asm("hlt"); }
 
 void kernel_main() {
 	// Initialization stuffs
 	isr_install();
 	irq_install();
+	register int ecx asm("ecx"); // Grab register ECX which has the bootdrive in it
+	if (initFS(ecx) == 0) {      // Initialize the filesystem and handle failure
+		kprint("FATAL: CAN'T INITIALIZE FILESYSTEM");
+		halt_cpu();
+	}
 	clear_screen();
-
-	/* for (int i = 0; i < sizeof Applications / sizeof Applications[0]; i++) {
-		kprint(Applications[i]);
-		kprint("\n");
-	} */
 
 	about();
 	kprint("Type something!\n");
@@ -42,8 +46,8 @@ void user_input(char *input) {
 
 	if (strcmp(input, "END") == 0) {
 		clear_screen();
-		kprint_at("Halting the CPU. Have a good day\n", 23, 11); // Centerish
-		asm volatile("hlt");
+		kprint_at("Halting the CPU. Have a good day!", 24, 12); // Centerish
+		halt_cpu();
 	} else if (strcmp(input, "clear") == 0) {
 		clear_screen();
 		reset_view();
