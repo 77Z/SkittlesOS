@@ -59,7 +59,7 @@ void user_input(char *input) {
 
 		int MatchFound = 0;
 
-		for (int i = 0; i < sizeof Applications / sizeof Applications[0]; i++) {
+		for (unsigned int i = 0; i < sizeof Applications / sizeof Applications[0]; i++) {
 			
 			//This needs to be rewritten to handle things like arguments, if only strtok wasn't so hard to write :'(
 			//A good replacement for this is javascripts split function, but this aint js chief
