@@ -3,6 +3,7 @@
 #include "../cpu/idt.h"
 #include "../cpu/timer.h"
 #include "../drivers/keyboard.h"
+#include "../drivers/serial.h"
 #include "kernel.h"
 
 //Filesystem
@@ -23,11 +24,16 @@ void kernel_main() {
 	isr_install();
 	irq_install();
 	register int ecx asm("ecx"); // Grab register ECX which has the bootdrive in it
+	clear_screen();
 	if (initFS(ecx) == 0) {      // Initialize the filesystem and handle failure
 		kprint("FATAL: CAN'T INITIALIZE FILESYSTEM");
 		halt_cpu();
 	}
-	clear_screen();
+	if (init_serial() == 0) {    // Initialize serial and handle failure
+		kprint("Failed to start serial communication\n");
+	}
+
+
 
 	about();
 	kprint("Type something!\n");

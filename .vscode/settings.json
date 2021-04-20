@@ -10,7 +10,10 @@
         "string.h": "c",
         "cstring": "c",
         "*.def": "c",
-        "skittles.h": "c"
+        "skittles.h": "c",
+        "serial.h": "c",
+        "keyboard.h": "c"
     },
-    "C_Cpp.errorSquiggles": "Enabled"
+    "C_Cpp.errorSquiggles": "Enabled",
+    "C_Cpp.dimInactiveRegions": false
 }
