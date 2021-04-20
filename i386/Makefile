@@ -21,7 +21,7 @@ kernel.bin: boot/kernel_entry.o ${OBJ}
 	i386-elf-ld -o $@ -Ttext 0x1000 $^ --oformat binary
 
 run: os-image.bin
-	qemu-system-i386 -fda $<
+	qemu-system-i386 -fda $< -serial file:serial.log
 
 # Generic rules for wildcards
 # To make an object, always compile from its .c
