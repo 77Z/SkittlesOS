@@ -3,7 +3,7 @@
 
 // Initialize Serial Ports for data transfer,
 // Returns 1 on success, 0 on fail
-static int init_serial() {
+int init_serial() {
 	port_byte_out(PORT1 + 1, 0x00); // Disable all interrupts
 	port_byte_out(PORT1 + 3, 0x80); // Set baud baud rate divisor
 	port_byte_out(PORT1 + 0, 0x03); // Set divisor to 3 (lo byte) 30400
@@ -43,4 +43,11 @@ int is_transmit_empty() {
 void write_serial(char a) {
 	while (is_transmit_empty() == 0);
 	port_byte_out(PORT1, a);
+}
+
+void printserial(char *message) {
+	int i = 0;
+	while (message[i] != 0) { // Loop through message until hit NULL
+		write_serial(message[i++]);
+	}
 }

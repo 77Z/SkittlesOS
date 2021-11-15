@@ -14,6 +14,7 @@
 #include "../programs/uname.h"
 #include "../programs/whoami.h"
 #include "../programs/game.h"
+#include <string.h>
 
 void about() { kprint("\nSkittles OS Ver 0.1.0\nBadoom Cha\n"); }
 void reset_view() { kprint("\n> "); }
@@ -32,6 +33,8 @@ void kernel_main() {
 	if (init_serial() == 0) {    // Initialize serial and handle failure
 		kprint("Failed to start serial communication\n");
 	}
+
+	printserial("Hello, outside world!");
 
 
 
@@ -60,6 +63,8 @@ void user_input(char *input) {
 	} else if (strcmp(input, "about") == 0) {
 		about();
 		reset_view();
+	} else if (strcmp(input, "serialwrite") == 0) {
+		// Nothing here yet as i need to parse arguments
 	} else {
 		//Not a system command, check if it's an application command
 

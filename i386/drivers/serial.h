@@ -6,8 +6,9 @@
 #define PORT3 0x3E8	// COM3
 #define PORT4 0x2E8	// COM4
 
-static int init_serial();
+int init_serial();
 char read_serial();
 void write_serial(char a);
+void printserial(char *message);
 
 #endif /* _SERIAL_H_ */
