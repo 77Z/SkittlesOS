@@ -1,4 +1,6 @@
 #include "../cpu/types.h"
+#include "../drivers/screen.h"
+#include "../libc/string.h"
 
 int GLOBAL_bootdrive = 0;
 
@@ -14,6 +16,9 @@ int initFS(int bootdrive) {
 
 // Replace data in a file, file needs to exists, returns 1 on success, 0 on fail
 int write_file(char *file_location, char* data) {
+    char drive[32];
+    int_to_ascii(GLOBAL_bootdrive, drive);
+    kprint(drive);
     return 1;
 }
 
