@@ -2,15 +2,14 @@
 # # $< = first dependency
 # # $^ = all dependencies
 
+include config.mk
+
 C_SOURCES = $(wildcard kernel/*.c drivers/*.c cpu/*.c libc/*.c programs/*.c filesystem/*.c)
 HEADERS   = $(wildcard kernel/*.h drivers/*.h cpu/*.h libc/*.h programs/*.h filesystem/*.h)
 # File extension replacement
 OBJ = ${C_SOURCES:.c=.o cpu/interrupt.o}
 
-CC = i386-elf-gcc
-# CC = i386-tcc
-
-CFLAGS = -ffreestanding -Wall -Wextra -fno-exceptions -m32
+CFLAGS = -ffreestanding -Wall -Wextra -fno-exceptions -m32 -DVERSION=\"${VERSION}\"
 
 # First rule is run by default
 os-image.bin: boot/bootsect.bin kernel.bin
@@ -18,7 +17,7 @@ os-image.bin: boot/bootsect.bin kernel.bin
 
 # '--oformat binary' deletes all symbols as a collateral.
 kernel.bin: boot/kernel_entry.o ${OBJ}
-	i386-elf-ld -o $@ -Ttext 0x1000 $^ --oformat binary
+	${LD} -o $@ -Ttext 0x1000 $^ --oformat binary
 
 run: os-image.bin
 	qemu-system-i386 -fda format=raw,file=./$< -serial file:serial.log

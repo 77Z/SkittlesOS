@@ -49,3 +49,14 @@ int strcmp(char s1[], char s2[]) {
 	}
 	return s1[i] - s2[i];
 }
+
+//supports up to 128 arguments and 1024 characters per argument
+/*char* splitstr(char string[], char separator) {
+	char array[128][1024] = {
+		"test",
+		"test",
+		"test"
+	};
+
+	return array;
+}*/
