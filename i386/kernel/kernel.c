@@ -1,10 +1,15 @@
-#include "../drivers/screen.h"
 #include "../cpu/isr.h"
 #include "../cpu/idt.h"
 #include "../cpu/timer.h"
+#include "../cpu/ports.h"
+
+#include "../drivers/screen.h"
 #include "../drivers/keyboard.h"
 #include "../drivers/serial.h"
+
 #include "kernel.h"
+
+#include "../libc/stdlib.h"
 
 //Filesystem
 #include "../filesystem/fs.h"
@@ -35,6 +40,27 @@ void bootfailure(char* message) {
 	kprint("\n");
 }
 
+// Returns number of items in array
+// with a little bit of modification this function can be a fully featured split function
+int splitBySpace(char* base, char target[10][20]) {
+	int n = 0;
+	int i;
+	int j = 0;
+
+	for (i = 0; TRUE; i++) {
+		if (base[i] != ' ') {
+			target[n][j++] = base[i];
+		} else {
+			target[n][j++] = '\0'; // Insert NULL
+			n++;
+			j = 0;
+		}
+		if (base[i] == '\0')
+			break;
+	}
+	return n;
+}
+
 void kernel_main() {
 	// Initialization stuffs
 	isr_install();
@@ -49,19 +75,18 @@ void kernel_main() {
 	} else {
 		bootsuccess("Initialized Filesystem");
 	}
-	
+
 	if (init_serial() == 0) {    // Initialize serial and handle failure
 		bootfailure("Failed to start serial communication");
 	} else {
 		bootsuccess("Initialized Serial communication");
+		printserial("[\033[0;32m***\033[0m] Initialized serial communication");
 	}
 
 	char driveint[64];
 	int_to_ascii(ecx, driveint);
 	kprint(driveint);
 	kprint("\n");
-
-	printserial("Hello, outside world!\n");
 
 	about();
 	reset_view();
@@ -71,7 +96,7 @@ void user_input(char *input) {
 	// Different method of looping through strings
 	// than seen in other places in code since
 	// there's no good NULL to end at.
-	char programName[128];
+	/*char programName[128];
 	char arguments[128];
 	char isarg = 0;
 
@@ -105,6 +130,31 @@ void user_input(char *input) {
 	}
 
 	isarg = 0;
+	reset_view();*/
+
+	char arr[10][20];
+
+	int n = splitBySpace(input, arr);
+
+	if (strcmp(arr[0], "serial") == 0) {
+		printserial(arr[1]);
+		printserial("\n");
+
+		kprint("Wrote to serial: ");
+		kprint(arr[1]);
+	} else if (strcmp(arr[0], "end") == 0) {
+		clear_screen();
+		kprint_at("Halting the CPU. Have a good day!", 24, 12);
+		port_word_out(0x604, 0x2000);
+		//halt_cpu();
+	} else if (strcmp(arr[0], "clear") == 0) {
+		clear_screen();
+	} else {
+		kprint("Entered Command \"");
+		kprint(arr[0]);
+		kprint("\" Was not recognized as a system command or application.");
+	}
+
 	reset_view();
 }
 
@@ -135,7 +185,7 @@ void user_input(char *input) {
 		int MatchFound = 0;
 
 		for (unsigned int i = 0; i < sizeof Applications / sizeof Applications[0]; i++) {
-			
+
 			//This needs to be rewritten to handle things like arguments, if only strtok wasn't so hard to write :'(
 			//A good replacement for this is javascripts split function, but this aint js chief
 			if (strcmp(Applications[i], input) == 0) {
