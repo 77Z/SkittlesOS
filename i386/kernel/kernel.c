@@ -21,7 +21,7 @@
 #include "../programs/game.h"
 
 void about() { kprint("\nSkittles OS Ver ");kprint(VERSION);kprint("\n"); }
-void reset_view() { kprint("\n> "); }
+void reset_view() { kprint("\nKERNEL # "); }
 void halt_cpu() { asm("hlt"); }
 
 void bootsuccess(char* message) {
@@ -119,10 +119,12 @@ void user_input(char *input) {
 	if (strcmp(programName, "serial") == 0) {
 		kprint("Wrote to serial");
 		printserial(arguments);
-	} else if (strcmp(programName, "END") == 0) {
+	} else if (strcmp(programName, "end") == 0) {
 		clear_screen();
 		kprint_at("Halting the CPU. Have a good day!", 24, 12);
 		halt_cpu();
+	} else if (strcmp(programName, "write") == 0) {
+		write_file("", "");
 	} else {
 		kprint("Entered Command \"");
 		kprint(programName);
