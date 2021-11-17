@@ -9,7 +9,7 @@ HEADERS   = $(wildcard kernel/*.h drivers/*.h cpu/*.h libc/*.h programs/*.h file
 # File extension replacement
 OBJ = ${C_SOURCES:.c=.o cpu/interrupt.o}
 
-CFLAGS = -ffreestanding -Wall -Wextra -fno-exceptions -m32 -DVERSION=\"${VERSION}\"
+CFLAGS = -ffreestanding -Wall -Wextra -fno-exceptions -m32 -DVERSION=\"${VERSION}\" -DBUILDDATE="\"${shell date -u}\"" -DLOCALVERSION="\"${LOCALVERSION}\""
 
 # First rule is run by default
 os-image.bin: boot/bootsect.bin kernel.bin

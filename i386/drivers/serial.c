@@ -1,5 +1,6 @@
 #include "serial.h"
-#include "../cpu/ports.h";
+#include "../cpu/ports.h"
+#include "screen.h"
 
 // Initialize Serial Ports for data transfer,
 // Returns 1 on success, 0 on fail
@@ -50,4 +51,10 @@ void printserial(char *message) {
 	while (message[i] != 0) { // Loop through message until hit NULL
 		write_serial(message[i++]);
 	}
+}
+
+// Prints to both the screen and serial ports
+void doubleprint(char *message) {
+	printserial(message);
+	kprint(message);
 }

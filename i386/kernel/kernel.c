@@ -1,11 +1,11 @@
 #include "../cpu/isr.h"
 #include "../cpu/idt.h"
 #include "../cpu/timer.h"
-#include "../cpu/ports.h"
 
 #include "../drivers/screen.h"
 #include "../drivers/keyboard.h"
 #include "../drivers/serial.h"
+#include "../drivers/acpi.h"
 
 #include "kernel.h"
 
@@ -20,8 +20,16 @@
 #include "../programs/whoami.h"
 #include "../programs/game.h"
 
-void about() { kprint("\nSkittles OS Ver ");kprint(VERSION);kprint("\n"); }
-void reset_view() { kprint("\nKERNEL # "); }
+void about() {
+	doubleprint("\nSkittles Version ");
+	doubleprint(VERSION);
+	doubleprint("-");
+	doubleprint(LOCALVERSION);
+	doubleprint(" Compiled on: ");
+	doubleprint(BUILDDATE);
+	doubleprint("\n");
+}
+void reset_view() { kprint("\n# "); }
 void halt_cpu() { asm("hlt"); }
 
 void bootsuccess(char* message) {
@@ -80,7 +88,7 @@ void kernel_main() {
 		bootfailure("Failed to start serial communication");
 	} else {
 		bootsuccess("Initialized Serial communication");
-		printserial("[\033[0;32m***\033[0m] Initialized serial communication");
+		printserial("[\033[0;32m***\033[0m] Initialized serial communication\n");
 	}
 
 	char driveint[64];
@@ -147,11 +155,33 @@ void user_input(char *input) {
 	} else if (strcmp(arr[0], "end") == 0) {
 		clear_screen();
 		kprint_at("Halting the CPU. Have a good day!", 24, 12);
-		port_word_out(0x604, 0x2000);
-		//halt_cpu();
+		halt_cpu();
+	} else if (strcmp(arr[0], "shutdown") == 0) {
+		clear_screen();
+		shutdown();
 	} else if (strcmp(arr[0], "clear") == 0) {
 		clear_screen();
-	} else {
+	} /*else if (strcmp(arr[0], "uname") == 0) {
+	    	// For whatever reason this program stops the keyboard from working...
+		if (strcmp(arr[1], "-r") == 0) {
+			kprint(VERSION);
+			kprint("-");
+			kprint(LOCALVERSION);
+		} else if (strcmp(arr[1], "-d") == 0) {
+			kprint(BUILDDATE);
+		} else if (strcmp(arr[1], "-n") == 0) {
+			kprint("Skittles");
+		} else if (strcmp(arr[1], "-a") == 0) {
+			kprint("Skittles ");
+			kprint(VERSION);
+			kprint("-");
+			kprint(LOCALVERSION);
+			kprint(" ");
+			kprint(BUILDDATE);
+		} else {
+			kprint("Skittles");
+		}
+	}*/ else {
 		kprint("Entered Command \"");
 		kprint(arr[0]);
 		kprint("\" Was not recognized as a system command or application.");

@@ -10,5 +10,6 @@ int init_serial();
 char read_serial();
 void write_serial(char a);
 void printserial(char *message);
+void doubleprint(char *message);
 
 #endif /* _SERIAL_H_ */
