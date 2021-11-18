@@ -1,0 +1,282 @@
+[
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-DVERSION=\"0.1.1\"",
+            "-DBUILDDATE=\"Wed Nov 17 04:51:08 UTC 2021\"",
+            "-DLOCALVERSION=\"generic\"",
+            "-ffreestanding",
+            "-o",
+            "cpu/ports.o",
+            "cpu/ports.c"
+        ],
+        "directory": "/home/vince/Projects/multipass/SkittlesOS/i386",
+        "file": "cpu/ports.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-DVERSION=\"0.1.1\"",
+            "-DBUILDDATE=\"Wed Nov 17 04:51:08 UTC 2021\"",
+            "-DLOCALVERSION=\"generic\"",
+            "-ffreestanding",
+            "-o",
+            "drivers/keyboard.o",
+            "drivers/keyboard.c"
+        ],
+        "directory": "/home/vince/Projects/multipass/SkittlesOS/i386",
+        "file": "drivers/keyboard.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-DVERSION=\"0.1.1\"",
+            "-DBUILDDATE=\"Wed Nov 17 04:51:08 UTC 2021\"",
+            "-DLOCALVERSION=\"generic\"",
+            "-ffreestanding",
+            "-o",
+            "cpu/idt.o",
+            "cpu/idt.c"
+        ],
+        "directory": "/home/vince/Projects/multipass/SkittlesOS/i386",
+        "file": "cpu/idt.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-DVERSION=\"0.1.1\"",
+            "-DBUILDDATE=\"Wed Nov 17 04:51:08 UTC 2021\"",
+            "-DLOCALVERSION=\"generic\"",
+            "-ffreestanding",
+            "-o",
+            "cpu/isr.o",
+            "cpu/isr.c"
+        ],
+        "directory": "/home/vince/Projects/multipass/SkittlesOS/i386",
+        "file": "cpu/isr.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-DVERSION=\"0.1.1\"",
+            "-DBUILDDATE=\"Wed Nov 17 04:51:07 UTC 2021\"",
+            "-DLOCALVERSION=\"generic\"",
+            "-ffreestanding",
+            "-o",
+            "drivers/acpi.o",
+            "drivers/acpi.c"
+        ],
+        "directory": "/home/vince/Projects/multipass/SkittlesOS/i386",
+        "file": "drivers/acpi.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-DVERSION=\"0.1.1\"",
+            "-DBUILDDATE=\"Wed Nov 17 04:51:09 UTC 2021\"",
+            "-DLOCALVERSION=\"generic\"",
+            "-ffreestanding",
+            "-o",
+            "filesystem/fs.o",
+            "filesystem/fs.c"
+        ],
+        "directory": "/home/vince/Projects/multipass/SkittlesOS/i386",
+        "file": "filesystem/fs.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-DVERSION=\"0.1.1\"",
+            "-DBUILDDATE=\"Wed Nov 17 04:51:09 UTC 2021\"",
+            "-DLOCALVERSION=\"generic\"",
+            "-ffreestanding",
+            "-o",
+            "programs/whoami.o",
+            "programs/whoami.c"
+        ],
+        "directory": "/home/vince/Projects/multipass/SkittlesOS/i386",
+        "file": "programs/whoami.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-DVERSION=\"0.1.1\"",
+            "-DBUILDDATE=\"Wed Nov 17 04:51:09 UTC 2021\"",
+            "-DLOCALVERSION=\"generic\"",
+            "-ffreestanding",
+            "-o",
+            "programs/uname.o",
+            "programs/uname.c"
+        ],
+        "directory": "/home/vince/Projects/multipass/SkittlesOS/i386",
+        "file": "programs/uname.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-DVERSION=\"0.1.1\"",
+            "-DBUILDDATE=\"Wed Nov 17 04:51:08 UTC 2021\"",
+            "-DLOCALVERSION=\"generic\"",
+            "-ffreestanding",
+            "-o",
+            "cpu/timer.o",
+            "cpu/timer.c"
+        ],
+        "directory": "/home/vince/Projects/multipass/SkittlesOS/i386",
+        "file": "cpu/timer.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-DVERSION=\"0.1.1\"",
+            "-DBUILDDATE=\"Wed Nov 17 04:51:09 UTC 2021\"",
+            "-DLOCALVERSION=\"generic\"",
+            "-ffreestanding",
+            "-o",
+            "programs/game.o",
+            "programs/game.c"
+        ],
+        "directory": "/home/vince/Projects/multipass/SkittlesOS/i386",
+        "file": "programs/game.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-DVERSION=\"0.1.1\"",
+            "-DBUILDDATE=\"Wed Nov 17 04:51:07 UTC 2021\"",
+            "-DLOCALVERSION=\"generic\"",
+            "-ffreestanding",
+            "-o",
+            "drivers/serial.o",
+            "drivers/serial.c"
+        ],
+        "directory": "/home/vince/Projects/multipass/SkittlesOS/i386",
+        "file": "drivers/serial.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-DVERSION=\"0.1.1\"",
+            "-DBUILDDATE=\"Wed Nov 17 04:51:07 UTC 2021\"",
+            "-DLOCALVERSION=\"generic\"",
+            "-ffreestanding",
+            "-o",
+            "drivers/screen.o",
+            "drivers/screen.c"
+        ],
+        "directory": "/home/vince/Projects/multipass/SkittlesOS/i386",
+        "file": "drivers/screen.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-DVERSION=\"0.1.1\"",
+            "-DBUILDDATE=\"Wed Nov 17 04:51:07 UTC 2021\"",
+            "-DLOCALVERSION=\"generic\"",
+            "-ffreestanding",
+            "-o",
+            "kernel/kernel.o",
+            "kernel/kernel.c"
+        ],
+        "directory": "/home/vince/Projects/multipass/SkittlesOS/i386",
+        "file": "kernel/kernel.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-DVERSION=\"0.1.1\"",
+            "-DBUILDDATE=\"Wed Nov 17 04:51:08 UTC 2021\"",
+            "-DLOCALVERSION=\"generic\"",
+            "-ffreestanding",
+            "-o",
+            "programs/pi.o",
+            "programs/pi.c"
+        ],
+        "directory": "/home/vince/Projects/multipass/SkittlesOS/i386",
+        "file": "programs/pi.c"
+    }
+]
