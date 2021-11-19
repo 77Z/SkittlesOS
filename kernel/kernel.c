@@ -1,22 +1,23 @@
-#include "../cpu/isr.h"
-#include "../cpu/idt.h"
-#include "../cpu/timer.h"
+#include <cpu/isr.h>
+#include <cpu/idt.h>
+#include <cpu/timer.h>
 
-#include "../drivers/screen.h"
-#include "../drivers/keyboard.h"
-#include "../drivers/serial.h"
-#include "../drivers/acpi.h"
+#include <drivers/screen.h>
+#include <drivers/keyboard.h>
+#include <drivers/serial.h>
+#include <drivers/acpi.h>
 
 #include "kernel.h"
 
-#include "../libc/stdlib.h"
+#include <libc/stdlib.h>
 
 //Filesystem
-#include "../fs/fs.h"
+#include <fs/fs.h>
 
 void about() {
 	doubleprint("\nSkittles ");
 	doubleprint(VERSION);
+	doubleprint("\n");
 }
 void reset_view() { kprint("\n# "); }
 void halt_cpu() { asm("hlt"); }

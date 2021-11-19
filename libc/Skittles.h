@@ -5,10 +5,10 @@
 #ifndef _SKITTLES_H_
 #define _SKITTLES_H_
 
-#include "../cpu/types.h"
+#include <cpu/types.h>
 #include "mem.h"
 #include "string.h"
-#include "../drivers/screen.h"
+#include <drivers/screen.h>
 
 // Shell Management
 void SKIT_print(char *input);

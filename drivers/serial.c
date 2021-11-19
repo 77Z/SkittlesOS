@@ -1,5 +1,5 @@
 #include "serial.h"
-#include "../cpu/ports.h"
+#include <cpu/ports.h>
 #include "screen.h"
 
 // Initialize Serial Ports for data transfer,

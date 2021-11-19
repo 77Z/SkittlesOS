@@ -1,6 +1,6 @@
-#include "../cpu/types.h"
-#include "../drivers/screen.h"
-#include "../libc/string.h"
+#include <cpu/types.h>
+#include <drivers/screen.h>
+#include <libc/string.h>
 
 // The filesystem that Skittles is going to support is
 // USTAR. Very simple filesystem which is a good thing for me!

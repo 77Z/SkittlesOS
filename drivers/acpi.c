@@ -1,7 +1,7 @@
 #include "acpi.h"
 
 #include "screen.h"
-#include "../cpu/ports.h"
+#include <cpu/ports.h>
 
 void shutdown() {
 	// QEMU Specific Shutdown

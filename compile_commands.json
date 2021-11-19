@@ -1,0 +1,192 @@
+[
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-Di386",
+            "-DVERSION=\"0.2.0_i386_generic\"",
+            "-I.",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-o",
+            "drivers/acpi.o",
+            "drivers/acpi.c"
+        ],
+        "directory": "/workspace/gitpod-vnc/SkittlesOS",
+        "file": "drivers/acpi.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-Di386",
+            "-DVERSION=\"0.2.0_i386_generic\"",
+            "-I.",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-o",
+            "cpu/idt.o",
+            "cpu/idt.c"
+        ],
+        "directory": "/workspace/gitpod-vnc/SkittlesOS",
+        "file": "cpu/idt.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-Di386",
+            "-DVERSION=\"0.2.0_i386_generic\"",
+            "-I.",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-o",
+            "cpu/timer.o",
+            "cpu/timer.c"
+        ],
+        "directory": "/workspace/gitpod-vnc/SkittlesOS",
+        "file": "cpu/timer.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-Di386",
+            "-DVERSION=\"0.2.0_i386_generic\"",
+            "-I.",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-o",
+            "drivers/screen.o",
+            "drivers/screen.c"
+        ],
+        "directory": "/workspace/gitpod-vnc/SkittlesOS",
+        "file": "drivers/screen.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-Di386",
+            "-DVERSION=\"0.2.0_i386_generic\"",
+            "-I.",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-o",
+            "kernel/kernel.o",
+            "kernel/kernel.c"
+        ],
+        "directory": "/workspace/gitpod-vnc/SkittlesOS",
+        "file": "kernel/kernel.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-Di386",
+            "-DVERSION=\"0.2.0_i386_generic\"",
+            "-I.",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-o",
+            "fs/fs.o",
+            "fs/fs.c"
+        ],
+        "directory": "/workspace/gitpod-vnc/SkittlesOS",
+        "file": "fs/fs.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-Di386",
+            "-DVERSION=\"0.2.0_i386_generic\"",
+            "-I.",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-o",
+            "drivers/keyboard.o",
+            "drivers/keyboard.c"
+        ],
+        "directory": "/workspace/gitpod-vnc/SkittlesOS",
+        "file": "drivers/keyboard.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-Di386",
+            "-DVERSION=\"0.2.0_i386_generic\"",
+            "-I.",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-o",
+            "cpu/ports.o",
+            "cpu/ports.c"
+        ],
+        "directory": "/workspace/gitpod-vnc/SkittlesOS",
+        "file": "cpu/ports.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-Di386",
+            "-DVERSION=\"0.2.0_i386_generic\"",
+            "-I.",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-o",
+            "cpu/isr.o",
+            "cpu/isr.c"
+        ],
+        "directory": "/workspace/gitpod-vnc/SkittlesOS",
+        "file": "cpu/isr.c"
+    },
+    {
+        "arguments": [
+            "i386-elf-gcc",
+            "-c",
+            "-Di386",
+            "-DVERSION=\"0.2.0_i386_generic\"",
+            "-I.",
+            "-ffreestanding",
+            "-Wall",
+            "-Wextra",
+            "-fno-exceptions",
+            "-m32",
+            "-o",
+            "drivers/serial.o",
+            "drivers/serial.c"
+        ],
+        "directory": "/workspace/gitpod-vnc/SkittlesOS",
+        "file": "drivers/serial.c"
+    }
+]
