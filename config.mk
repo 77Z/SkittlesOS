@@ -1,6 +1,6 @@
 # Skittles make config file
 
-VERSION = 0.2.0
+VERSION = 0.2.1
 LOCALVERSION = generic
 ARCH = i386
 

@@ -9,14 +9,18 @@
 #define BACKSPACE 0x0E
 #define CAPSLOCK 0x3A
 
-#define LSHIFTDOWN 0x2A
-#define LSHIFTUP 0xAA
-#define RSHIFTDOWN 0x36
+#define CTRL	0x1d
+#define LSHIFT	0x2A
+#define RSHIFT	0x36
+#define ALT	0x38
 
 #define ENTER 0x1C
 
 static char key_buffer[256];
 static int CapsStatus = 0;
+static int CtrlStatus = 0;
+static int AltStatus  = 0;
+
 
 #define SC_MAX 58
 const char *sc_name[] = { "ERROR", "Esc", "1", "2", "3", "4", "5", "6",
@@ -47,35 +51,52 @@ const char Lsc_ascii[] = { '?', '?', '1', '2', '3', '4', '5', '6',
 static void keyboard_callback(registers_t regs) {
 	// The PIC leaves us the scancode in port 0x60
 	u8 scancode = port_byte_in(0x60);
-	
-	if (scancode > SC_MAX) return;
-	if (scancode == BACKSPACE) {
-		kprint_backspace(key_buffer);
-		backspace(key_buffer);
-	} else if (scancode == ENTER) {
-		kprint("\n");
-		user_input(key_buffer); // kernel-controlled function
-		key_buffer[0] = '\0';
-	} else if (scancode == CAPSLOCK) {
-		// Toggle caps lock
-		if (CapsStatus)
+	// Thank you opuntiaOS for the incredible idea of detecting when the key is released.
+	if (scancode & 0x80) {
+		scancode -= 0x80;
+		// Key up
+		
+		if (scancode == CTRL)
+			CtrlStatus = 0;
+
+		if (scancode == LSHIFT)
 			CapsStatus = 0;
-		else
-			CapsStatus = 1;
-	} else if (scancode == LSHIFTUP) {
-		//CapsStatus = 0;
-		kprint("SHIFTUP");
-	} else if (scancode == LSHIFTDOWN) {
-		//CapsStatus = 1;
-		kprint("SHIFTDOWN");
+
+		if (scancode == ALT)
+			AltStatus = 0;
 	} else {
-		char letter = sc_ascii[(int)scancode];
-		if (CapsStatus == 0)
-			letter = Lsc_ascii[(int)scancode];
-		// Remember that kprint only accepts char[]
-		char str[2] = {letter, '\0'};
-		append(key_buffer, letter);
-		kprint(str);
+
+		// Key down
+
+		if (scancode > SC_MAX) return;
+		if (scancode == BACKSPACE) {
+			kprint_backspace(key_buffer);
+			backspace(key_buffer);
+		} else if (scancode == ENTER) {
+			kprint("\n");
+			user_input(key_buffer); // kernel-controlled function
+			key_buffer[0] = '\0';
+		} else if (scancode == CAPSLOCK) {
+			// Toggle caps lock
+			if (CapsStatus)
+				CapsStatus = 0;
+			else
+				CapsStatus = 1;
+		} else if (scancode == LSHIFT) {
+			CapsStatus = 1;
+		} else if (scancode == CTRL) {
+			CtrlStatus = 1;
+		} else if (scancode == ALT) {
+			AltStatus = 1;
+		} else {
+			char letter = sc_ascii[(int)scancode];
+			if (CapsStatus == 0)
+				letter = Lsc_ascii[(int)scancode];
+			// Remember that kprint only accepts char[]
+			char str[2] = {letter, '\0'};
+			append(key_buffer, letter);
+			kprint(str);
+		}
 	}
 	UNUSED(regs);
 }

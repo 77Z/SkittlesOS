@@ -101,7 +101,7 @@ void user_input(char *input) {
 
 		kprint("Wrote to serial: ");
 		kprint(arr[1]);
-	} else if (strcmp(arr[0], "end") == 0) {
+	} else if (strcmp(arr[0], "END") == 0) {
 		clear_screen();
 		kprint_at("Halting the CPU. Have a good day!", 24, 12);
 		halt_cpu();
@@ -110,6 +110,12 @@ void user_input(char *input) {
 		shutdown();
 	} else if (strcmp(arr[0], "clear") == 0) {
 		clear_screen();
+	} else if (strcmp(arr[0], "readreg") == 0) {
+		register int ecx asm("ebx");
+		char driveint[64];
+		int_to_ascii(ecx, driveint);
+		kprint(driveint);
+		kprint("\n");
 	} else {
 		kprint("Entered Command \"");
 		kprint(arr[0]);
