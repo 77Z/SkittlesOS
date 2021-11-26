@@ -1,6 +1,8 @@
 #ifndef _STDLIB_H_
 #define _STDLIB_H_
 
+typedef enum { FALSE, TRUE } bool;
+
 #define TRUE 1
 #define FALSE 0
 

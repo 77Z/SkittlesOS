@@ -1,9 +1,9 @@
 [
   {
     "arguments": [
-      "/usr/local/bin/i386-elf-gcc",
+      "/home/vince/Projects/Skittles/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
       "-Di386",
-      "-DVERSION=\"0.2.0_i386_generic\"",
+      "-DVERSION=\"0.2.2_i386_generic\"",
       "-I.",
       "-ffreestanding",
       "-Wall",
@@ -15,8 +15,248 @@
       "kernel/kernel.o",
       "kernel/kernel.c"
     ],
-    "directory": "/home/vince/Projects/multipass/SkittlesOS",
-    "file": "/home/vince/Projects/multipass/SkittlesOS/kernel/kernel.c",
-    "output": "/home/vince/Projects/multipass/SkittlesOS/kernel/kernel.o"
+    "directory": "/home/vince/Projects/Skittles/SkittlesOS",
+    "file": "/home/vince/Projects/Skittles/SkittlesOS/kernel/kernel.c",
+    "output": "/home/vince/Projects/Skittles/SkittlesOS/kernel/kernel.o"
+  },
+  {
+    "arguments": [
+      "/home/vince/Projects/Skittles/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+      "-Di386",
+      "-DVERSION=\"0.2.2_i386_generic\"",
+      "-I.",
+      "-ffreestanding",
+      "-Wall",
+      "-Wextra",
+      "-fno-exceptions",
+      "-m32",
+      "-c",
+      "-o",
+      "drivers/acpi.o",
+      "drivers/acpi.c"
+    ],
+    "directory": "/home/vince/Projects/Skittles/SkittlesOS",
+    "file": "/home/vince/Projects/Skittles/SkittlesOS/drivers/acpi.c",
+    "output": "/home/vince/Projects/Skittles/SkittlesOS/drivers/acpi.o"
+  },
+  {
+    "arguments": [
+      "/home/vince/Projects/Skittles/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+      "-Di386",
+      "-DVERSION=\"0.2.2_i386_generic\"",
+      "-I.",
+      "-ffreestanding",
+      "-Wall",
+      "-Wextra",
+      "-fno-exceptions",
+      "-m32",
+      "-c",
+      "-o",
+      "drivers/keyboard.o",
+      "drivers/keyboard.c"
+    ],
+    "directory": "/home/vince/Projects/Skittles/SkittlesOS",
+    "file": "/home/vince/Projects/Skittles/SkittlesOS/drivers/keyboard.c",
+    "output": "/home/vince/Projects/Skittles/SkittlesOS/drivers/keyboard.o"
+  },
+  {
+    "arguments": [
+      "/home/vince/Projects/Skittles/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+      "-Di386",
+      "-DVERSION=\"0.2.2_i386_generic\"",
+      "-I.",
+      "-ffreestanding",
+      "-Wall",
+      "-Wextra",
+      "-fno-exceptions",
+      "-m32",
+      "-c",
+      "-o",
+      "drivers/screen.o",
+      "drivers/screen.c"
+    ],
+    "directory": "/home/vince/Projects/Skittles/SkittlesOS",
+    "file": "/home/vince/Projects/Skittles/SkittlesOS/drivers/screen.c",
+    "output": "/home/vince/Projects/Skittles/SkittlesOS/drivers/screen.o"
+  },
+  {
+    "arguments": [
+      "/home/vince/Projects/Skittles/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+      "-Di386",
+      "-DVERSION=\"0.2.2_i386_generic\"",
+      "-I.",
+      "-ffreestanding",
+      "-Wall",
+      "-Wextra",
+      "-fno-exceptions",
+      "-m32",
+      "-c",
+      "-o",
+      "drivers/serial.o",
+      "drivers/serial.c"
+    ],
+    "directory": "/home/vince/Projects/Skittles/SkittlesOS",
+    "file": "/home/vince/Projects/Skittles/SkittlesOS/drivers/serial.c",
+    "output": "/home/vince/Projects/Skittles/SkittlesOS/drivers/serial.o"
+  },
+  {
+    "arguments": [
+      "/home/vince/Projects/Skittles/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+      "-Di386",
+      "-DVERSION=\"0.2.2_i386_generic\"",
+      "-I.",
+      "-ffreestanding",
+      "-Wall",
+      "-Wextra",
+      "-fno-exceptions",
+      "-m32",
+      "-c",
+      "-o",
+      "cpu/idt.o",
+      "cpu/idt.c"
+    ],
+    "directory": "/home/vince/Projects/Skittles/SkittlesOS",
+    "file": "/home/vince/Projects/Skittles/SkittlesOS/cpu/idt.c",
+    "output": "/home/vince/Projects/Skittles/SkittlesOS/cpu/idt.o"
+  },
+  {
+    "arguments": [
+      "/home/vince/Projects/Skittles/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+      "-Di386",
+      "-DVERSION=\"0.2.2_i386_generic\"",
+      "-I.",
+      "-ffreestanding",
+      "-Wall",
+      "-Wextra",
+      "-fno-exceptions",
+      "-m32",
+      "-c",
+      "-o",
+      "cpu/isr.o",
+      "cpu/isr.c"
+    ],
+    "directory": "/home/vince/Projects/Skittles/SkittlesOS",
+    "file": "/home/vince/Projects/Skittles/SkittlesOS/cpu/isr.c",
+    "output": "/home/vince/Projects/Skittles/SkittlesOS/cpu/isr.o"
+  },
+  {
+    "arguments": [
+      "/home/vince/Projects/Skittles/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+      "-Di386",
+      "-DVERSION=\"0.2.2_i386_generic\"",
+      "-I.",
+      "-ffreestanding",
+      "-Wall",
+      "-Wextra",
+      "-fno-exceptions",
+      "-m32",
+      "-c",
+      "-o",
+      "cpu/ports.o",
+      "cpu/ports.c"
+    ],
+    "directory": "/home/vince/Projects/Skittles/SkittlesOS",
+    "file": "/home/vince/Projects/Skittles/SkittlesOS/cpu/ports.c",
+    "output": "/home/vince/Projects/Skittles/SkittlesOS/cpu/ports.o"
+  },
+  {
+    "arguments": [
+      "/home/vince/Projects/Skittles/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+      "-Di386",
+      "-DVERSION=\"0.2.2_i386_generic\"",
+      "-I.",
+      "-ffreestanding",
+      "-Wall",
+      "-Wextra",
+      "-fno-exceptions",
+      "-m32",
+      "-c",
+      "-o",
+      "cpu/timer.o",
+      "cpu/timer.c"
+    ],
+    "directory": "/home/vince/Projects/Skittles/SkittlesOS",
+    "file": "/home/vince/Projects/Skittles/SkittlesOS/cpu/timer.c",
+    "output": "/home/vince/Projects/Skittles/SkittlesOS/cpu/timer.o"
+  },
+  {
+    "arguments": [
+      "/home/vince/Projects/Skittles/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+      "-Di386",
+      "-DVERSION=\"0.2.2_i386_generic\"",
+      "-I.",
+      "-ffreestanding",
+      "-Wall",
+      "-Wextra",
+      "-fno-exceptions",
+      "-m32",
+      "-c",
+      "-o",
+      "libc/mem.o",
+      "libc/mem.c"
+    ],
+    "directory": "/home/vince/Projects/Skittles/SkittlesOS",
+    "file": "/home/vince/Projects/Skittles/SkittlesOS/libc/mem.c",
+    "output": "/home/vince/Projects/Skittles/SkittlesOS/libc/mem.o"
+  },
+  {
+    "arguments": [
+      "/home/vince/Projects/Skittles/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+      "-Di386",
+      "-DVERSION=\"0.2.2_i386_generic\"",
+      "-I.",
+      "-ffreestanding",
+      "-Wall",
+      "-Wextra",
+      "-fno-exceptions",
+      "-m32",
+      "-c",
+      "-o",
+      "libc/Skittles.o",
+      "libc/Skittles.c"
+    ],
+    "directory": "/home/vince/Projects/Skittles/SkittlesOS",
+    "file": "/home/vince/Projects/Skittles/SkittlesOS/libc/Skittles.c",
+    "output": "/home/vince/Projects/Skittles/SkittlesOS/libc/Skittles.o"
+  },
+  {
+    "arguments": [
+      "/home/vince/Projects/Skittles/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+      "-Di386",
+      "-DVERSION=\"0.2.2_i386_generic\"",
+      "-I.",
+      "-ffreestanding",
+      "-Wall",
+      "-Wextra",
+      "-fno-exceptions",
+      "-m32",
+      "-c",
+      "-o",
+      "libc/string.o",
+      "libc/string.c"
+    ],
+    "directory": "/home/vince/Projects/Skittles/SkittlesOS",
+    "file": "/home/vince/Projects/Skittles/SkittlesOS/libc/string.c",
+    "output": "/home/vince/Projects/Skittles/SkittlesOS/libc/string.o"
+  },
+  {
+    "arguments": [
+      "/home/vince/Projects/Skittles/i386-elf-7.5.0-Linux-x86_64/bin/i386-elf-gcc",
+      "-Di386",
+      "-DVERSION=\"0.2.2_i386_generic\"",
+      "-I.",
+      "-ffreestanding",
+      "-Wall",
+      "-Wextra",
+      "-fno-exceptions",
+      "-m32",
+      "-c",
+      "-o",
+      "fs/fs.o",
+      "fs/fs.c"
+    ],
+    "directory": "/home/vince/Projects/Skittles/SkittlesOS",
+    "file": "/home/vince/Projects/Skittles/SkittlesOS/fs/fs.c",
+    "output": "/home/vince/Projects/Skittles/SkittlesOS/fs/fs.o"
   }
 ]

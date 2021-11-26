@@ -10,6 +10,9 @@
 #include "kernel.h"
 
 #include <libc/stdlib.h>
+#include <libc/function.h>
+#include <libc/stdio.h>
+#include <libc/runtime.h>
 
 //Filesystem
 #include <fs/fs.h>
@@ -22,25 +25,10 @@ void about() {
 void reset_view() { kprint("\n# "); }
 void halt_cpu() { asm("hlt"); }
 
-void bootsuccess(char* message) {
-	kprint("[");
-	kprint_color("***", GREEN_ON_BLACK);
-	kprint("] ");
-	kprint(message);
-	kprint("\n");
-}
-
-void bootfailure(char* message) {
-	kprint("[");
-	kprint_color("***", RED_ON_BLACK);
-	kprint("] ");
-	kprint(message);
-	kprint("\n");
-}
 
 // Returns number of items in array
 // with a little bit of modification this function can be a fully featured split function
-int splitBySpace(char* base, char target[10][20]) {
+int splitBySpace(char* base, char target[128][1024]) {
 	int n = 0;
 	int i;
 	int j = 0;
@@ -66,14 +54,6 @@ void kernel_main() {
 	irq_install();
 	bootsuccess("Installed IRQ");
 	register int ecx asm("ebx"); // Grab register ECX which has the bootdrive in it
-	//clear_screen();
-	if (initFS(ecx) == 0) {      // Initialize the filesystem and handle failure
-		kprint("FATAL: CAN'T INITIALIZE FILESYSTEM");
-		halt_cpu();
-	} else {
-		bootsuccess("Initialized Filesystem");
-	}
-
 	if (init_serial() == 0) {    // Initialize serial and handle failure
 		bootfailure("Failed to start serial communication");
 	} else {
@@ -81,19 +61,28 @@ void kernel_main() {
 		printserial("[\033[0;32m***\033[0m] Initialized serial communication\n");
 	}
 
+	if (initFS(ecx) == 0) {      // Initialize the filesystem and handle failure
+		kprint("FATAL: CAN'T INITIALIZE FILESYSTEM");
+		halt_cpu();
+	} else {
+		bootsuccess("Initialized Filesystem");
+	}
+
 	char driveint[64];
 	int_to_ascii(ecx, driveint);
 	kprint(driveint);
 	kprint("\n");
+
+	print("Hello from print!");
 
 	about();
 	reset_view();
 }
 
 void user_input(char *input) {
-	char arr[10][20];
+	char arr[128][1024];
 
-	int n = splitBySpace(input, arr);
+	int n = splitstring(input, arr, ' ');
 
 	if (strcmp(arr[0], "serial") == 0) {
 		printserial(arr[1]);
@@ -116,11 +105,15 @@ void user_input(char *input) {
 		int_to_ascii(ecx, driveint);
 		kprint(driveint);
 		kprint("\n");
+	} else if (strcmp(arr[0], "CRASH") == 0) {
+		runtimeError("User initalized crash", TRUE);
 	} else {
 		kprint("Entered Command \"");
 		kprint(arr[0]);
 		kprint("\" Was not recognized as a system command or application.");
 	}
+
+	UNUSED(n);
 
 	reset_view();
 }

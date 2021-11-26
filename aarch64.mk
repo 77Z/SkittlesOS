@@ -1,2 +1,2 @@
 all:
-    aarch64-elf-as -c boot.S -o boot.o
+	aarch64-elf-as -c boot.S -o boot.o

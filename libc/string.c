@@ -1,4 +1,5 @@
 #include "string.h"
+#include "libc/stdlib.h"
 
 void int_to_ascii(int n, char str[]) {
 	int i, sign;
@@ -50,13 +51,21 @@ int strcmp(char s1[], char s2[]) {
 	return s1[i] - s2[i];
 }
 
-//supports up to 128 arguments and 1024 characters per argument
-/*char* splitstr(char string[], char separator) {
-	char array[128][1024] = {
-		"test",
-		"test",
-		"test"
-	};
+int splitstring(char* base, char target[128][1024], char splitChar) {
+	int n = 0;
+	int i;
+	int j = 0;
 
-	return array;
-}*/
+	for (i = 0; TRUE; i++) {
+		if (base[i] != splitChar) {
+			target[n][j++] = base[i];
+		} else {
+			target[n][j++] = '\0'; // Insert NULL
+			n++;
+			j = 0;
+		}
+		if (base[i] == '\0')
+			break;
+	}
+	return n;
+}
