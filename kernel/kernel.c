@@ -107,6 +107,10 @@ void user_input(char *input) {
 		kprint("\n");
 	} else if (strcmp(arr[0], "CRASH") == 0) {
 		runtimeError("User initalized crash", TRUE);
+	} else if (strcmp(arr[0], "s") == 0) {
+		debugTree();
+	} else if (strcmp(arr[0], "a") == 0) {
+		create_directory(arr[1]);
 	} else {
 		kprint("Entered Command \"");
 		kprint(arr[0]);

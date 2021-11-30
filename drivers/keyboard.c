@@ -9,7 +9,7 @@
 #define BACKSPACE 0x0E
 #define CAPSLOCK 0x3A
 
-#define CTRL	0x1d
+#define CTRL	0x1D
 #define LSHIFT	0x2A
 #define RSHIFT	0x36
 #define ALT	0x38
