@@ -25,27 +25,7 @@ void about() {
 void reset_view() { kprint("\n# "); }
 void halt_cpu() { asm("hlt"); }
 
-
-// Returns number of items in array
-// with a little bit of modification this function can be a fully featured split function
-int splitBySpace(char* base, char target[128][1024]) {
-	int n = 0;
-	int i;
-	int j = 0;
-
-	for (i = 0; TRUE; i++) {
-		if (base[i] != ' ') {
-			target[n][j++] = base[i];
-		} else {
-			target[n][j++] = '\0'; // Insert NULL
-			n++;
-			j = 0;
-		}
-		if (base[i] == '\0')
-			break;
-	}
-	return n;
-}
+// Split By Space is in libc/string.c now
 
 void kernel_main() {
 	// Initialization stuffs
