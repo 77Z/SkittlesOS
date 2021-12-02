@@ -1,9 +1,6 @@
-all:
-	aarch64-elf-as -c arch/aarch64/boot.S -o arch/aarch64/boot.o
-
 CC = aarch64-elf-gcc
 LD = i386-elf-ld
-NASM = aarch64-elf-as
+ASM = aarch64-elf-as
 
 include config.mk
 
@@ -14,8 +11,12 @@ OBJ = ${C_SOURCES:.c=.o cpu/interrupt.o}
 
 CFLAGS = -D${ARCH} -DVERSION=\"${FULLVER}\" -I. -ffreestanding -Wall -Wextra -fno-exceptions -m32
 
-#skittles-aarch64.bin: arch/aarch64/boot.o kernel.bin
+skittles-aarch64.bin: arch/aarch64/boot.asm
 
 %.o: %.c ${HEADERS}
 	@echo [BUILD] $<
 	@${CC} ${CFLAGS} -c $< -o $@
+
+%.bin: %.asm
+	@echo [ASM  ] $<
+	@${ASM} -c $< -f bin -o $@

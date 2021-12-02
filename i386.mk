@@ -3,7 +3,7 @@
 CC = i386-elf-gcc
 # CC = i386-tcc
 LD = i386-elf-ld
-NASM = nasm
+ASM = nasm
 
 include config.mk
 
@@ -40,8 +40,8 @@ run: skittles.bin
 
 %.o: %.asm
 	@echo [ASM  ] $<
-	@nasm $< -f elf32 -o $@
+	@${ASM} $< -f elf32 -o $@
 
 %.bin: %.asm
 	@echo [ASM  ] $<
-	@nasm $< -f bin -o $@
+	@${ASM} $< -f bin -o $@
