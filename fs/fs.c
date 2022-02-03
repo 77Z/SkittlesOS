@@ -16,6 +16,8 @@ int initFS(int bootdrive) {
 	printserial("Boot Drive: ");
 	printserial(driveint);
 	printserial("\n");
+
+	return 1;
 }
 
 void create_directory(char* fullpath) {

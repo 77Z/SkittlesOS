@@ -4,6 +4,7 @@ CC = i386-elf-gcc
 # CC = i386-tcc
 LD = i386-elf-ld
 ASM = nasm
+BIN = bin/i386
 
 include config.mk
 
@@ -19,12 +20,15 @@ OBJ = ${C_SOURCES:.c=.o cpu/interrupt.o}
 
 CFLAGS = -D${ARCH} -DVERSION=\"${FULLVER}\" -I. -ffreestanding -Wall -Wextra -fno-exceptions -m32
 
-skittles.bin: arch/i386/bootsect.bin kernel.bin
+dirs:
+	mkdir -p $(BIN)
+
+skittles.bin: dirs arch/i386/bootsect.bin kernel.bin
 	@echo [CAT  ] $@
-	cat $^ > $@
+	cat $^ > $(BIN)/$@
 
 # '--oformat binary' deletes all symbols as a collateral.
-kernel.bin: arch/i386/kernel_entry.o ${OBJ}
+kernel.bin: dirs arch/i386/kernel_entry.o ${OBJ}
 	@echo [LINK ] $^
 	@${LD} -o $@ -Ttext 0x1000 $^ --oformat binary
 
